@@ -1,17 +1,33 @@
 import { useState } from "react"
 import { Zap, X } from "lucide-react"
 
-const cards = [
+type ModalSection =
+  | { type: "bullets"; title?: string; items: { text: string; highlight?: string }[] }
+  | { type: "numbered"; title?: string; items: { text: string; sub?: string }[] }
+  | { type: "contacts"; title?: string; items: { role: string; name: string; phone: string }[] }
+  | { type: "divider" }
+
+interface Modal {
+  title: string
+  sections: ModalSection[]
+}
+
+const cards: { icon: string; title: string; description: string; modal: Modal | null; href?: string }[] = [
   {
     icon: "📋",
     title: "Ревизии",
     description: "Расписание и инструкции по проведению",
     modal: {
       title: "📋 Ревизии — полная информация",
-      items: [
-        "Плановые ревизии: каждый день с 10:00 до 22:00.",
-        "Проверке подлежат: оружейные склады государственных организаций.",
-        "По итогам ревизии составляется акт и отправляется в штаб.",
+      sections: [
+        {
+          type: "bullets",
+          items: [
+            { text: "Плановые ревизии: каждый день с 10:00 до 22:00." },
+            { text: "Проверке подлежат: оружейные склады государственных организаций." },
+            { text: "По итогам ревизии составляется акт и отправляется в штаб." },
+          ],
+        },
       ],
     },
   },
@@ -19,19 +35,60 @@ const cards = [
     icon: "⭐",
     title: "Аттестация",
     description: "Требования и порядок сдачи",
-    modal: null,
+    modal: {
+      title: "🎖️ Аттестация — порядок и требования",
+      sections: [
+        {
+          type: "bullets",
+          title: "Правила прохождения",
+          items: [
+            { text: "Срок на сдачу: ", highlight: "5 дней" },
+            { text: "Допускается не более ", highlight: "5 ошибок", },
+            { text: "При провале — ", highlight: "2 дня", },
+            { text: "После второго провала — перевод в ", highlight: "РМТО/ДШР" },
+          ],
+        },
+        { type: "divider" },
+        {
+          type: "numbered",
+          title: "Что входит в аттестацию",
+          items: [
+            { text: "Внутренний устав ВЧ" },
+            { text: "Устав ВП" },
+            { text: "ФЗ «О территориях с ограниченным доступом»" },
+            { text: "ФЗ «Об оружии»" },
+            { text: "ФЗ «О статусе военнослужащих и военной службе»" },
+            { text: "Уголовный кодекс" },
+            { text: "Федеральное постановление" },
+            { text: "Правила и процесс задержания" },
+            { text: "Проверка на знание приказов Генерала", sub: "в разработке" },
+          ],
+        },
+      ],
+    },
   },
   {
     icon: "📞",
     title: "Контакты",
     description: "Командование и инструкторы",
-    modal: null,
-    href: "#pricing",
+    modal: {
+      title: "📞 Контакты командования и экстренная связь",
+      sections: [
+        {
+          type: "contacts",
+          items: [
+            { role: "Начальник военной полиции", name: "Майор Чапкин М.Д.", phone: "380-800" },
+            { role: "Зам. по БП", name: "Вакантно", phone: "" },
+            { role: "Отдел кадров", name: "Прапорщик Васильев Н.И.", phone: "554-929" },
+          ],
+        },
+      ],
+    },
   },
 ]
 
 export function HeroSection() {
-  const [activeModal, setActiveModal] = useState<typeof cards[0]["modal"] | null>(null)
+  const [activeModal, setActiveModal] = useState<Modal | null>(null)
 
   const handleCardClick = (card: typeof cards[0], e: React.MouseEvent) => {
     if (card.modal) {
@@ -104,14 +161,15 @@ export function HeroSection() {
       {/* Modal */}
       {activeModal && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center px-4"
+          className="fixed inset-0 z-50 flex items-center justify-center px-4 py-8"
           onClick={() => setActiveModal(null)}
         >
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
           <div
-            className="relative z-10 w-full max-w-md bg-zinc-900 border border-zinc-700 rounded-2xl p-6 shadow-2xl"
+            className="relative z-10 w-full max-w-md bg-zinc-900 border border-zinc-700 rounded-2xl p-6 shadow-2xl max-h-[85vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
+            {/* Header */}
             <div className="flex items-start justify-between mb-5">
               <h2 className="font-heading font-bold text-zinc-100 text-lg leading-snug pr-4">
                 {activeModal.title}
@@ -123,14 +181,86 @@ export function HeroSection() {
                 <X className="w-4 h-4 text-zinc-400" />
               </button>
             </div>
-            <ul className="space-y-3">
-              {activeModal.items.map((item, i) => (
-                <li key={i} className="flex items-start gap-3 text-sm text-zinc-400">
-                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-zinc-500 flex-shrink-0" />
-                  {item}
-                </li>
-              ))}
-            </ul>
+
+            {/* Sections */}
+            <div className="space-y-5">
+              {activeModal.sections.map((section, si) => {
+                if (section.type === "divider") {
+                  return <div key={si} className="border-t border-zinc-800" />
+                }
+
+                if (section.type === "bullets") {
+                  return (
+                    <div key={si}>
+                      {section.title && (
+                        <p className="text-sm font-semibold text-zinc-400 mb-3">{section.title}</p>
+                      )}
+                      <ul className="space-y-3">
+                        {section.items.map((item, i) => (
+                          <li key={i} className="flex items-start gap-3 text-sm text-zinc-400">
+                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-zinc-500 flex-shrink-0" />
+                            <span>
+                              {item.text}
+                              {item.highlight && (
+                                <span className="font-bold text-zinc-200"> {item.highlight} </span>
+                              )}
+                              {item.text.endsWith(" ") ? "." : ""}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )
+                }
+
+                if (section.type === "numbered") {
+                  return (
+                    <div key={si}>
+                      {section.title && (
+                        <p className="text-sm font-semibold text-zinc-400 mb-3">{section.title}</p>
+                      )}
+                      <ol className="space-y-2">
+                        {section.items.map((item, i) => (
+                          <li key={i} className="flex items-start gap-3 text-sm text-zinc-300">
+                            <span className="text-zinc-500 flex-shrink-0 w-4">{i + 1}.</span>
+                            <span>
+                              {item.text}
+                              {item.sub && (
+                                <span className="text-zinc-500 ml-1">({item.sub})</span>
+                              )}
+                            </span>
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
+                  )
+                }
+
+                if (section.type === "contacts") {
+                  return (
+                    <div key={si}>
+                      {section.title && (
+                        <p className="text-sm font-semibold text-zinc-400 mb-3">{section.title}</p>
+                      )}
+                      <ul className="space-y-4">
+                        {section.items.map((item, i) => (
+                          <li key={i} className="flex items-start gap-3 text-sm text-zinc-400">
+                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-zinc-500 flex-shrink-0" />
+                            <span>
+                              <span className="font-semibold text-zinc-200">{item.role}:</span>{" "}
+                              {item.name}
+                              {item.phone && <> — тел. {item.phone}</>}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )
+                }
+
+                return null
+              })}
+            </div>
           </div>
         </div>
       )}
