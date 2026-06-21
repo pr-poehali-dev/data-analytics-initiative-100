@@ -1,47 +1,28 @@
-import { Check } from "lucide-react"
+import { Phone } from "lucide-react"
 
-const plans = [
+const officers = [
   {
-    name: "Старт",
-    description: "Идеален для пет-проектов и небольших команд",
-    price: "0 ₽",
-    period: "навсегда",
-    features: ["До 3 участников", "5 проектов", "Базовая аналитика", "Поддержка сообщества", "1 ГБ хранилища"],
-    cta: "Начать",
-    highlighted: false,
-  },
-  {
-    name: "Про",
-    description: "Для растущих команд с высокими требованиями",
-    price: "2 900 ₽",
-    period: "/мес",
-    features: [
-      "Безлимит участников",
-      "Безлимит проектов",
-      "Расширенная аналитика",
-      "Приоритетная поддержка",
-      "100 ГБ хранилища",
-      "Свои интеграции",
-      "Доступ к API",
-    ],
-    cta: "Попробовать бесплатно",
+    role: "Начальник военной полиции",
+    name: "Майор Феофилов А.С.",
+    phone: "380-800",
     highlighted: true,
   },
   {
-    name: "Бизнес",
-    description: "Для крупных организаций с особыми требованиями",
-    price: "По запросу",
-    period: "",
-    features: [
-      "Все из тарифа Про",
-      "Персональный менеджер",
-      "Индивидуальный SLA",
-      "On-premise развертывание",
-      "Безлимит хранилища",
-      "Расширенная безопасность",
-      "Обучение и онбординг",
-    ],
-    cta: "Связаться с нами",
+    role: "Зам. по БП",
+    name: "Прапорщик Васильев Н.В.",
+    phone: "826-755",
+    highlighted: false,
+  },
+  {
+    role: "Старший инструктор",
+    name: "Прапорщик Сол М.Н.",
+    phone: "888-566",
+    highlighted: false,
+  },
+  {
+    role: "Отдел кадров",
+    name: "Прапорщик Макеева А.Д.",
+    phone: "554-929",
     highlighted: false,
   },
 ]
@@ -52,66 +33,49 @@ export function PricingSection() {
       <div className="max-w-5xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <p className="text-sm font-medium text-zinc-500 uppercase tracking-wider mb-4">Тарифы</p>
+          <p className="text-sm font-medium text-zinc-500 uppercase tracking-wider mb-4">Контакты</p>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-zinc-100 mb-4">
-            Простые и понятные цены
+            Командование и инструкторы
           </h2>
           <p className="text-zinc-500 max-w-xl mx-auto text-balance text-lg">
-            Никаких скрытых платежей. Никаких сюрпризов. Выберите подходящий план.
+            Командный канал связи: FIRE | Войсковая часть 20115. По всем вопросам обращайтесь к командованию.
           </p>
         </div>
 
-        {/* Pricing Grid */}
-        <div className="grid md:grid-cols-3 gap-6">
-          {plans.map((plan) => (
+        {/* Contacts Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {officers.map((officer) => (
             <div
-              key={plan.name}
+              key={officer.phone}
               className={`p-8 rounded-2xl border flex flex-col h-full ${
-                plan.highlighted ? "bg-zinc-100 border-zinc-100" : "bg-zinc-900/50 border-zinc-800/50"
+                officer.highlighted ? "bg-zinc-100 border-zinc-100" : "bg-zinc-900/50 border-zinc-800/50"
               }`}
             >
-              {/* Plan Header */}
-              <div className="mb-6">
-                <h3
-                  className={`font-heading text-xl font-semibold mb-2 ${
-                    plan.highlighted ? "text-zinc-900" : "text-zinc-100"
-                  }`}
-                >
-                  {plan.name}
-                </h3>
-                <p className={`text-sm ${plan.highlighted ? "text-zinc-600" : "text-zinc-500"}`}>{plan.description}</p>
-              </div>
+              <p
+                className={`text-sm uppercase tracking-wider mb-3 ${
+                  officer.highlighted ? "text-zinc-600" : "text-zinc-500"
+                }`}
+              >
+                {officer.role}
+              </p>
+              <h3
+                className={`font-heading text-lg font-semibold mb-6 ${
+                  officer.highlighted ? "text-zinc-900" : "text-zinc-100"
+                }`}
+              >
+                {officer.name}
+              </h3>
 
-              {/* Price */}
-              <div className="mb-6">
-                <span
-                  className={`font-display text-4xl font-bold ${plan.highlighted ? "text-zinc-900" : "text-zinc-100"}`}
-                >
-                  {plan.price}
-                </span>
-                <span className={`text-sm ${plan.highlighted ? "text-zinc-600" : "text-zinc-500"}`}>{plan.period}</span>
-              </div>
-
-              {/* Features */}
-              <ul className="space-y-3 mb-8 flex-1">
-                {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-3">
-                    <Check className={`w-5 h-5 shrink-0 ${plan.highlighted ? "text-zinc-900" : "text-zinc-400"}`} />
-                    <span className={`text-sm ${plan.highlighted ? "text-zinc-700" : "text-zinc-400"}`}>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* CTA */}
               <a
-                href="#"
-                className={`block w-full py-3 px-6 text-center rounded-full font-medium text-sm transition-colors mt-auto ${
-                  plan.highlighted
+                href={`tel:${officer.phone}`}
+                className={`mt-auto flex items-center justify-center gap-2 w-full py-3 px-6 rounded-full font-medium text-sm transition-colors ${
+                  officer.highlighted
                     ? "bg-zinc-900 text-zinc-100 hover:bg-zinc-800"
                     : "bg-zinc-800 text-zinc-100 hover:bg-zinc-700"
                 }`}
               >
-                {plan.cta}
+                <Phone className="w-4 h-4" />
+                тел. {officer.phone}
               </a>
             </div>
           ))}

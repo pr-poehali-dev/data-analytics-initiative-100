@@ -3,58 +3,58 @@ import { TestimonialsColumn } from "@/components/ui/testimonials-column"
 
 const testimonials = [
   {
-    text: "Velocite сократил наш пайплайн деплоя с 4 часов до 12 минут. Автоматизация кардинально изменила наш CI/CD процесс.",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face",
-    name: "Анна Смирнова",
-    role: "CTO в TechFlow Solutions",
+    text: "Чёткая организация ревизий и понятные требования. Подготовка к аттестации прошла без лишних вопросов.",
+    image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=150&h=150&fit=crop&crop=face",
+    name: "Курсант Орлов И.",
+    role: "Взвод военной полиции",
   },
   {
-    text: "Мы изучили 15 платформ, прежде чем выбрать Velocite. ROI стал очевиден уже в первый месяц использования.",
+    text: "Командование всегда на связи. Инструкторы помогают разобраться в порядке службы и нормативах.",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
-    name: "Максим Волков",
-    role: "VP Engineering в Quantum Dynamics",
+    name: "Сержант Петров А.",
+    role: "Сотрудник ВП",
   },
   {
-    text: "Наша команда выпустила в 3 раза больше фич за квартал. Инструменты совместной работы сделали удаленку бесшовной.",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
-    name: "Елена Родригес",
-    role: "Head of Product в Alpine Ventures",
+    text: "Аттестацию сдал с первого раза. Все материалы и расписание были доступны заранее.",
+    image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&h=150&fit=crop&crop=face",
+    name: "Курсант Зайцев К.",
+    role: "Взвод военной полиции",
   },
   {
-    text: "Онбординг прошел невероятно гладко. Вся команда разработки стала продуктивной уже на первой неделе.",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
-    name: "Дмитрий Парк",
-    role: "IT-директор в Stellar Analytics",
-  },
-  {
-    text: "Поддержка клиентов на высоте. Помогли мигрировать всю инфраструктуру с нулевым даунтаймом.",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face",
-    name: "Анна Ковальски",
-    role: "Операционный директор в Nova Industries",
-  },
-  {
-    text: "API-интеграции сэкономили сотни часов разработки. Все работает из коробки.",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
-    name: "Алексей Вилсон",
-    role: "CEO в Meridian Tech",
-  },
-  {
-    text: "Velocite изменил наш подход к релизам. Откаты, занимавшие часы, теперь происходят за секунды.",
-    image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop&crop=face",
-    name: "Лиза Томпсон",
-    role: "DevOps Lead в Cascade Systems",
-  },
-  {
-    text: "Аналитический дашборд дает инсайты, которых у нас раньше не было. Data-driven решения стали нормой.",
+    text: "Дисциплина и порядок на высоте. Каждый знает свои задачи и зону ответственности.",
     image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop&crop=face",
-    name: "Михаил Чен",
-    role: "Product Manager в Vertex Labs",
+    name: "Ефрейтор Соколов Д.",
+    role: "Сотрудник ВП",
   },
   {
-    text: "Частота деплоев выросла в 5 раз без дополнительных затрат на инфраструктуру. Впечатляющая платформа.",
+    text: "Отдел кадров оперативно решает вопросы по личному составу. Всё прозрачно и по уставу.",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+    name: "Курсант Морозов Е.",
+    role: "Взвод военной полиции",
+  },
+  {
+    text: "Инструкции по проведению ревизий понятны и структурированы. Служба организована грамотно.",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
+    name: "Сержант Лебедев Р.",
+    role: "Сотрудник ВП",
+  },
+  {
+    text: "Командный канал связи работает чётко. Любой приказ доходит до личного состава мгновенно.",
+    image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop&crop=face",
+    name: "Курсант Волков С.",
+    role: "Взвод военной полиции",
+  },
+  {
+    text: "Старший инструктор подробно разбирает каждый норматив. Подготовка реально качественная.",
     image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face",
-    name: "Рахиль Ким",
-    role: "Engineering Manager в Prism Digital",
+    name: "Ефрейтор Новиков П.",
+    role: "Сотрудник ВП",
+  },
+  {
+    text: "Гордость служить в части. Сильный коллектив, грамотное командование и порядок во всём.",
+    image: "https://images.unsplash.com/photo-1488161628813-04466f872be2?w=150&h=150&fit=crop&crop=face",
+    name: "Курсант Кузнецов М.",
+    role: "Взвод военной полиции",
   },
 ]
 
@@ -62,7 +62,7 @@ const firstColumn = testimonials.slice(0, 3)
 const secondColumn = testimonials.slice(3, 6)
 const thirdColumn = testimonials.slice(6, 9)
 
-const logos = ["TechFlow", "Quantum Dynamics", "Alpine Ventures", "Stellar Analytics", "Nova Industries", "Meridian Tech"]
+const logos = ["ВЧ 20115", "FIRE", "Военная полиция", "Ревизии", "Аттестация", "Боевая подготовка"]
 
 export function TestimonialsSection() {
   return (
@@ -75,13 +75,13 @@ export function TestimonialsSection() {
           viewport={{ once: true }}
           className="flex flex-col items-center justify-center max-w-xl mx-auto mb-12"
         >
-          <div className="border border-zinc-800 py-1.5 px-4 rounded-full text-sm text-zinc-400">Отзывы</div>
+          <div className="border border-zinc-800 py-1.5 px-4 rounded-full text-sm text-zinc-400">Аттестация</div>
 
           <h2 className="font-display text-4xl md:text-5xl font-bold text-zinc-100 mt-6 text-center tracking-tight">
-            Что говорят пользователи
+            Отзывы личного состава
           </h2>
           <p className="text-center mt-4 text-zinc-500 text-lg text-balance">
-            Узнайте мнение наших клиентов о платформе.
+            Что говорят курсанты и сотрудники о службе и подготовке в части.
           </p>
         </motion.div>
 
@@ -92,7 +92,7 @@ export function TestimonialsSection() {
         </div>
 
         <div className="mt-16 pt-16 border-t border-zinc-800/50">
-          <p className="text-center text-sm text-zinc-500 mb-8">Нам доверяют лидеры индустрии</p>
+          <p className="text-center text-sm text-zinc-500 mb-8">FIRE | Войсковая часть 20115</p>
           <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]">
             <motion.div
               className="flex gap-12 md:gap-16"
