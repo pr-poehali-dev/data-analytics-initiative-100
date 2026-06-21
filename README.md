@@ -1,3 +1,7 @@
-# data-analytics-initiative-100
+# Velocite — Премиум SaaS Лендинг
 
-Initial repository setup for pr-poehali-dev/data-analytics-initiative-100
+![Preview](preview.png)
+
+Современный лендинг для SaaS-продукта с темной темой и минималистичным дизайном. Включает все необходимые секции: Hero с social proof, описание функций, отзывы клиентов, тарифные планы и CTA-блок. Идеально подходит для запуска стартапа или презентации технологического продукта.
+
+`"tags": ["saas", "dark", "landing", "pricing", "testimonials", "gradient"]`
