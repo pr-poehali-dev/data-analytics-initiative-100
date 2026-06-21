@@ -38,7 +38,7 @@ export function PricingSection() {
         </div>
 
         {/* Contacts Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-3xl mx-auto">
           {officers.map((officer) => (
             <div
               key={officer.phone}
