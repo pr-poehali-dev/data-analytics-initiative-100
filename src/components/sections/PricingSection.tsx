@@ -3,25 +3,19 @@ import { Phone } from "lucide-react"
 const officers = [
   {
     role: "Начальник военной полиции",
-    name: "Майор Феофилов А.С.",
+    name: "Майор Чапкин М.Д.",
     phone: "380-800",
     highlighted: true,
   },
   {
     role: "Зам. по БП",
-    name: "Прапорщик Васильев Н.В.",
-    phone: "826-755",
-    highlighted: false,
-  },
-  {
-    role: "Старший инструктор",
-    name: "Прапорщик Сол М.Н.",
-    phone: "888-566",
+    name: "Вакантно",
+    phone: "",
     highlighted: false,
   },
   {
     role: "Отдел кадров",
-    name: "Прапорщик Макеева А.Д.",
+    name: "Прапорщик Васильев Н.И.",
     phone: "554-929",
     highlighted: false,
   },
@@ -67,17 +61,19 @@ export function PricingSection() {
                 {officer.name}
               </h3>
 
-              <a
-                href={`tel:${officer.phone}`}
-                className={`mt-auto flex items-center justify-center gap-2 w-full py-3 px-6 rounded-full font-medium text-sm transition-colors ${
-                  officer.highlighted
-                    ? "bg-zinc-900 text-zinc-100 hover:bg-zinc-800"
-                    : "bg-zinc-800 text-zinc-100 hover:bg-zinc-700"
-                }`}
-              >
-                <Phone className="w-4 h-4" />
-                тел. {officer.phone}
-              </a>
+              {officer.phone && (
+                <a
+                  href={`tel:${officer.phone}`}
+                  className={`mt-auto flex items-center justify-center gap-2 w-full py-3 px-6 rounded-full font-medium text-sm transition-colors ${
+                    officer.highlighted
+                      ? "bg-zinc-900 text-zinc-100 hover:bg-zinc-800"
+                      : "bg-zinc-800 text-zinc-100 hover:bg-zinc-700"
+                  }`}
+                >
+                  <Phone className="w-4 h-4" />
+                  тел. {officer.phone}
+                </a>
+              )}
             </div>
           ))}
         </div>
