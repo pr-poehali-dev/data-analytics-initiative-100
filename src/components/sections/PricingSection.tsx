@@ -37,9 +37,9 @@ export function PricingSection() {
           <h2 className="font-display text-4xl md:text-5xl font-bold text-zinc-100 mb-4">
             Командование и инструкторы
           </h2>
-          <p className="text-zinc-500 max-w-xl mx-auto text-balance text-lg">
-            Командный канал связи: FIRE | ВЧ | Взвод Военной Полиции
-По всем вопросам обращайтесь к командованию.
+          <p className="text-zinc-500 max-w-xl mx-auto text-lg">
+            Командный канал связи: FIRE | ВЧ | Взвод Военной Полиции<br />
+            По всем вопросам обращайтесь к командованию.
           </p>
         </div>
 
